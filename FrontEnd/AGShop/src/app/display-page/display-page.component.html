@@ -1,0 +1,72 @@
+
+<html>
+  <head>
+    
+  </head>
+
+<body>
+  
+<div class="container text-center">
+    <h1>Shop Zone</h1>
+    <h3> Welcome : {{userDisplayName}}</h3>
+    <button class="logg" (click)="Logout()">Logout</button>
+   
+    <div class="prices">
+    <form ngNativeValidate #priceform="ngForm" (ngSubmit)="pricerange()">
+      <input  class="search-field2" type="number" name="min" placeholder="Enter Min Price"  [(ngModel)]="price.min" required>
+      <input class="search-field2" type="number" name="max" placeholder="Enter Max Price" [(ngModel)]="price.max" required >
+    
+      <button style="border-radius:9rem ;" class="btn btn-light" type="submit">Filter Price</button>
+    </form>
+  </div>
+
+       
+    <div class="verticalbox">
+      <div class="searchicon">
+        
+        <form ngNativeValidate #search="ngForm" class="form-inline">
+          <input class="search-field" type="search" name="search" placeholder="Search By Brand,Name,Code "
+            aria-label="Search" ngModel required>
+          <br>
+          <button
+          class="btn btn-light my-2 my-sm-0 filter-btn" (click)="getProductListBySearchs(search.value)"
+            type="submit">Filter</button>
+        </form>
+        </div>
+      </div>
+      <div *ngIf="semsg==1" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Sorry</strong> <strong style="color:red; margin-left: 6px;">Product Not Found </strong>
+       
+      </div>
+   
+   
+    </div> 
+    <div class="shell">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3" *ngFor="let item of proData" >
+            <div class="wsk-cp-product">
+              <div class="wsk-cp-img">
+                <img src={{item.image}} routerLink="/detail/{{item.code}}"/>
+              </div>
+              <div class="wsk-cp-text">
+                <div class="category">
+                  <span>{{item.probrand}}</span>
+                </div>
+                <div class="title-product">
+                    <h3>{{item.proname}}</h3>
+                  </div>
+                <p>Rating : {{item.rating}} of 5</p>
+               
+              </div>
+            </div>
+          </div>
+         
+          </div>
+        </div>
+      </div>
+     
+
+    </body>
+   
+    </html>

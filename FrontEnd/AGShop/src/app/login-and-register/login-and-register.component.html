@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slide Navbar</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div *ngIf="message==1" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Sorry</strong> <strong style="color:red; margin-left: 6px;">Bad Credentials</strong>
+       
+      </div>
+      <div   *ngIf="message1==1" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Congratulation</strong> <strong style="color:red;"> Registeration Success : Click login </strong>
+       
+      </div>
+      <div *ngIf="message1==2" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Sorry</strong> <strong style="color:red; margin-left: 6px;"> User With this Email already present</strong>
+       
+      </div>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form ngNativeValidate #registerform="ngForm" (ngSubmit)="registerUser()">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="userName" placeholder="User name"  [(ngModel)]="user2.userName" required>
+					<input type="email" name="email" placeholder="Email" [(ngModel)]="user2.emailId" required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+					<input type="password" name="password" placeholder="Password"  [(ngModel)]="user2.password" required >
+					<button type="submit">Register</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form ngNativeValidate #loginform="ngForm" (ngSubmit)="loginUser()">
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" [(ngModel)]="user.emailId" required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" >
+					<input type="password" name="password" placeholder="Password" [(ngModel)]="user.password" required>
+					<button type="submit">Login</button>
+				</form>
+			</div>
+	</div>
+</body>
+</html>

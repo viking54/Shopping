@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Add Products</title>
+	
+</head>
+
+<body>
+    <button class ="frg"(click)="Logout()">Logout</button>
+    <div *ngIf="message==1" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Congratulation</strong> <strong style="color:red;"> Product Added </strong>
+       
+      </div>
+      <div *ngIf="message==2" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Sorry</strong> <strong style="color:red; margin-left: 6px;">Product with This Code Alredy Presant in data </strong>
+       
+      </div>
+		
+	<div class="container" id="container">
+		<div class="form-container log-in-container">
+			<form ngNativeValidate  #productform="ngForm"  (ngSubmit)="Saveproduct()">
+				<h1>Add Product</h1>
+				<input  type="number" name="code" placeholder="code" [(ngModel)]="product.code"  required />
+				<input type="text" name="proname" placeholder="Product Name"  [(ngModel)]="product.proname"   required  />
+                <input type="text" name="probrand" placeholder="Product Brand" [(ngModel)]="product.probrand"  required />
+				<input type="url" name="image" placeholder="Image" [(ngModel)]="product.image" required  style="color: tomato;"/>
+                <input type="number" name="price" placeholder="price" [(ngModel)]="product.price"  required />
+				<button class="but3"type="submit" >Submit Result</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div  class="overlay-panel overlay-right">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
